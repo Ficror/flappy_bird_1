@@ -48,8 +48,8 @@ if __name__ == '__main__':
         Tube(tubes_sprites, up=False, coordx=x_1, coordy=y_1)
         Tube(tubes_sprites, up=True, coordx=x_1, coordy=y_1 - 700)
 
-    fps = 60
     v = 400
+    fps = 60
     pygame.init()
     size = width, height = 1100, 600
     gol_color = [150, 200, 250]
