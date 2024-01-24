@@ -3,6 +3,9 @@ import os
 import sys
 import random
 from Tubes import Tube
+import sys
+from PyQt5.QtWidgets import QApplication
+from hello import Pages
 
 
 def load_image(name, colorkey=None):
