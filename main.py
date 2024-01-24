@@ -2,6 +2,8 @@ import pygame
 import os
 import sys
 import random
+
+from Bird import Bird
 from Tubes import Tube
 import sys
 from PyQt5.QtWidgets import QApplication
@@ -19,17 +21,22 @@ def load_image(name, colorkey=None):
 
 
 if __name__ == '__main__':
-    tubes_sprites = pygame.sprite.Group()
     x_1 = 600
+    y_1 = 100
+    size = width, height = 1100, 600
+    gol_color = [150, 200, 250]
+
+    tubes_sprites = pygame.sprite.Group()
+    bird_sprite = pygame.sprite.Group()
+    bird = Bird(bird_sprite, up=True, coordx=x_1, coordy=y_1, v=350, fps=60)
+
     for i in range(4):
         x_1 += 300
         y_1 = random.randrange(300, 500)
-        Tube(tubes_sprites, up=False, coordx=x_1, coordy=y_1, v=400, fps=60)
-        Tube(tubes_sprites, up=True, coordx=x_1, coordy=y_1 - 700, v=400, fps=60)
+        Tube(tubes_sprites, up=False, coordx=x_1, coordy=y_1, v=200, fps=60)
+        Tube(tubes_sprites, up=True, coordx=x_1, coordy=y_1 - 700, v=200, fps=60)
 
     pygame.init()
-    size = width, height = 1100, 600
-    gol_color = [150, 200, 250]
     screen = pygame.display.set_mode(size)
     clock = pygame.time.Clock()
 
@@ -38,9 +45,15 @@ if __name__ == '__main__':
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                bird.isJump = True
+        if pygame.sprite.spritecollideany(bird, tubes_sprites) is not None:
+            sys.exit()
         screen.fill(gol_color)
         tubes_sprites.update()
         tubes_sprites.draw(screen)
+        bird_sprite.update()
+        bird_sprite.draw(screen)
         pygame.display.flip()
         clock.tick(60)
     pygame.quit()

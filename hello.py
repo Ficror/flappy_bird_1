@@ -24,7 +24,7 @@ class Pages(QMainWindow):
             self.image.setPixmap(self.pixmap)
             self.show()
             self.complexity_Button.clicked.connect(self.run)
-            self.startButton.setText(f"Начать игру\nУровень: {complexity}")
+            self.startButton.clicked.connect(self.quit)
 
     def run(self):
         global complexity
@@ -34,7 +34,3 @@ class Pages(QMainWindow):
         if ok_pressed:
             self.startButton.setText(f"Начать игру\nУровень: {complexity}")
 
-
-app = QApplication(sys.argv)
-hello_page = Pages("hello_page.ui")
-sys.exit(app.exec_())

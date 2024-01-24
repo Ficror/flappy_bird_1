@@ -1,15 +1,19 @@
 import os
 import sys
 
+
 import pygame
 
 
 def load_image(name, colorkey=None):
+
     fullname = os.path.join('images', name)
     # если файл не существует, то выходим
+
     if not os.path.isfile(fullname):
         print(f"Файл с изображением '{fullname}' не найден")
         sys.exit()
+
     image = pygame.image.load(fullname)
     return image
 
@@ -31,11 +35,16 @@ class Tube(pygame.sprite.Sprite):
 
     def update(self):
         if self.up:
+
             self.image = Tube.image2
+
         else:
+
             self.image = Tube.image
 
         if self.rect.x <= -100:
+
             self.rect.x = 1100
         else:
+
             self.rect.x -= self.v / self.fps
