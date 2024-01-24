@@ -27,7 +27,12 @@ def draw(screen):
 
 
 if __name__ == '__main__':
-
+    v_0 = 0
+    #ЭТО НАЧАЛЬНАЯ СКОРОСТЬ. ПОКА ВЫПОЛНЯЕТСЯ ПРОГРАММА В QT ЭТОТ ПАРАМЕТР РАВЕН 0, А КОГДА ОКНО QT СВОРАЧИВАЕТСЯ ПРИДАЕМ ЗНАЧЕНИЕ СКОРОСТИ 350
+    #
+    #
+    #
+    v_0 = 350
     x_1 = 600
     y_1 = 100
     size = width, height = 1100, 600
@@ -37,13 +42,13 @@ if __name__ == '__main__':
 
     tubes_sprites = pygame.sprite.Group()
     bird_sprite = pygame.sprite.Group()
-    bird = Bird(bird_sprite, up=True, coordx=x_1, coordy=y_1, v=350, fps=60)
+    bird = Bird(bird_sprite, up=True, coordx=x_1, coordy=y_1, v=v_0, fps=60)
 
     for i in range(4):
         x_1 += 300
         y_1 = random.randrange(300, 500)
-        Tube(tubes_sprites, up=False, coordx=x_1, coordy=y_1, v=200, fps=100)
-        Tube(tubes_sprites, up=True, coordx=x_1, coordy=y_1 - 680, v=200, fps=100)
+        Tube(tubes_sprites, up=False, coordx=x_1, coordy=y_1, v=v_0, fps=100)
+        Tube(tubes_sprites, up=True, coordx=x_1, coordy=y_1 - 680, v=v_0, fps=100)
 
     pygame.init()
     screen = pygame.display.set_mode(size)
