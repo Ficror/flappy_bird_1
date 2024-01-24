@@ -32,6 +32,7 @@ class Tube(pygame.sprite.Sprite):
         self.rect.x = coordx
         self.rect.y = coordy
         self.up = up
+        self.counter = 0
 
     def update(self):
         if self.up:
@@ -46,5 +47,5 @@ class Tube(pygame.sprite.Sprite):
 
             self.rect.x = 1100
         else:
+            self.rect.x -= 4
 
-            self.rect.x -= self.v / self.fps

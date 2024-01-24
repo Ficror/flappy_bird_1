@@ -6,8 +6,6 @@ import random
 from Bird import Bird
 from Tubes import Tube
 import sys
-from PyQt5.QtWidgets import QApplication
-from hello import Pages
 
 
 def load_image(name, colorkey=None):
@@ -20,11 +18,22 @@ def load_image(name, colorkey=None):
     return image
 
 
+def draw(screen):
+    font = pygame.font.Font(None, 80)
+    text = font.render(f'Результат: {str(counter)}', True, (0, 0, 0))
+    text_x = 400
+    text_y = 50
+    screen.blit(text, (text_x, text_y))
+
+
 if __name__ == '__main__':
+
     x_1 = 600
     y_1 = 100
     size = width, height = 1100, 600
     gol_color = [150, 200, 250]
+    counter = 0
+    coords_of_bird = 600
 
     tubes_sprites = pygame.sprite.Group()
     bird_sprite = pygame.sprite.Group()
@@ -33,8 +42,8 @@ if __name__ == '__main__':
     for i in range(4):
         x_1 += 300
         y_1 = random.randrange(300, 500)
-        Tube(tubes_sprites, up=False, coordx=x_1, coordy=y_1, v=200, fps=60)
-        Tube(tubes_sprites, up=True, coordx=x_1, coordy=y_1 - 700, v=200, fps=60)
+        Tube(tubes_sprites, up=False, coordx=x_1, coordy=y_1, v=200, fps=100)
+        Tube(tubes_sprites, up=True, coordx=x_1, coordy=y_1 - 700, v=200, fps=100)
 
     pygame.init()
     screen = pygame.display.set_mode(size)
@@ -49,11 +58,19 @@ if __name__ == '__main__':
                 bird.isJump = True
         if pygame.sprite.spritecollideany(bird, tubes_sprites) is not None:
             sys.exit()
+        for i in tubes_sprites.sprites():
+            if i.rect.x == bird.rect.x:
+                counter += 1
+                if counter % 4 == 0:
+                    coords_of_bird += 50
+                break
+
         screen.fill(gol_color)
         tubes_sprites.update()
         tubes_sprites.draw(screen)
         bird_sprite.update()
         bird_sprite.draw(screen)
+        draw(screen)
         pygame.display.flip()
         clock.tick(60)
     pygame.quit()

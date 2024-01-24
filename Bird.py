@@ -16,7 +16,6 @@ def load_image(name, colorkey=None):
 class Bird(pygame.sprite.Sprite):
     image = load_image("bird_middle.png")
     image = pygame.transform.scale(image, (50, 50))
-    image2 = pygame.transform.flip(image, 0, 1)
 
     def __init__(self, *group, up, coordx, coordy, v, fps):
         super().__init__(*group)
