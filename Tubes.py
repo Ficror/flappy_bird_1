@@ -20,6 +20,7 @@ def load_image(name, colorkey=None):
 
 
 class Tube(pygame.sprite.Sprite):
+
     image = load_image("tube3.png")
     image = pygame.transform.scale(image, (100, 500))
     image2 = pygame.transform.flip(image, 0, 1)
@@ -49,10 +50,15 @@ class Tube(pygame.sprite.Sprite):
             self.rect.x = 1100
         else:
             if complexity == 'Легкий':
+
                 self.rect.x -= 4
+
             elif complexity == 'Базовый':
+
                 self.rect.x -= 5
+
             else:
+
                 self.rect.x -= 10
 
 
