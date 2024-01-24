@@ -34,7 +34,7 @@ if __name__ == '__main__':
     #
     v_0 = 350
     x_1 = 600
-    y_1 = 100
+    y_1 = 200
     size = width, height = 1100, 600
     gol_color = [150, 200, 250]
     counter = 0
