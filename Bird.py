@@ -4,7 +4,6 @@ import pygame
 
 
 def load_image(name, colorkey=None):
-
     fullname = os.path.join('images', name)
     # если файл не существует, то выходим
 
@@ -18,7 +17,6 @@ def load_image(name, colorkey=None):
 
 
 class Bird(pygame.sprite.Sprite):
-
     image = load_image("bird_middle.png")
     image = pygame.transform.scale(image, (50, 50))
 

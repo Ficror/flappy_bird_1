@@ -43,7 +43,7 @@ if __name__ == '__main__':
         x_1 += 300
         y_1 = random.randrange(300, 500)
         Tube(tubes_sprites, up=False, coordx=x_1, coordy=y_1, v=200, fps=100)
-        Tube(tubes_sprites, up=True, coordx=x_1, coordy=y_1 - 700, v=200, fps=100)
+        Tube(tubes_sprites, up=True, coordx=x_1, coordy=y_1 - 680, v=200, fps=100)
 
     pygame.init()
     screen = pygame.display.set_mode(size)

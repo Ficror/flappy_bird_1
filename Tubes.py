@@ -1,13 +1,11 @@
 import os
 import sys
 
-
 import pygame
 from hello import complexity
 
 
 def load_image(name, colorkey=None):
-
     fullname = os.path.join('images', name)
     # если файл не существует, то выходим
 
@@ -20,7 +18,6 @@ def load_image(name, colorkey=None):
 
 
 class Tube(pygame.sprite.Sprite):
-
     image = load_image("tube3.png")
     image = pygame.transform.scale(image, (100, 500))
     image2 = pygame.transform.flip(image, 0, 1)
@@ -60,5 +57,3 @@ class Tube(pygame.sprite.Sprite):
             else:
 
                 self.rect.x -= 10
-
-
