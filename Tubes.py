@@ -2,7 +2,6 @@ import os
 import sys
 
 import pygame
-from hello import complexity
 
 
 def load_image(name, colorkey=None):
@@ -47,14 +46,4 @@ class Tube(pygame.sprite.Sprite):
             self.rect.x = 1100
         else:
             if self.v != 0:
-                if complexity == 'Легкий':
-
-                    self.rect.x -= 4
-
-                elif complexity == 'Базовый':
-
-                    self.rect.x -= 5
-
-                else:
-
-                    self.rect.x -= 10
+                self.rect.x -= 4
